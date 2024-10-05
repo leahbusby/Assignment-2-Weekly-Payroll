@@ -1,0 +1,47 @@
+#include <iostream>
+#include <iomanip> // For std::setprecision and std::fixed
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Variable declarations
+    int employeeID, hoursWorked;
+    float hourlyRate, federalWithholdingRate;
+    const float FICADEDUCT = 7.65;
+
+    // Welcome message
+    cout << "Welcome to my Weekly Payroll program!!" << endl;
+
+    // User input
+    cout << "Enter Employee ID: ";
+    cin >> employeeID;
+    cout << "Enter Hours Worked: ";
+    cin >> hoursWorked;
+    cout << "Enter Hourly Rate: ";
+    cin >> hourlyRate;
+    cout << "Enter Federal Withholding Rate (%): ";
+    cin >> federalWithholdingRate;
+
+    // Calculations
+    float grossPay = hoursWorked * hourlyRate;
+    float FICADeductions = grossPay * (FICADEDUCT / 100);
+    float federalTaxWithholding = grossPay * (federalWithholdingRate / 100);
+    float totalDeductions = FICADeductions + federalTaxWithholding;
+    float netPay = grossPay - totalDeductions;
+
+    // Output results
+    cout << fixed << setprecision(2); // Formatting output to 2 decimal places
+    cout << "Your Payroll Summary:" << endl;
+    cout << "Employee ID: " << employeeID << endl;
+    cout << "Gross Pay: $" << grossPay << endl;
+    cout << "FICA Deductions: $" << FICADeductions << endl;
+    cout << "Federal Tax Withholding: $" << federalTaxWithholding << endl;
+    cout << "Total Deductions: $" << totalDeductions << endl;
+    cout << "Net Pay: $" << netPay << endl;
+
+    // Thank you message
+    cout << "Thank you for using my Weekly Payroll program!!" << endl;
+
+    return 0;
+}
